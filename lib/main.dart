@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_basics/home.dart';
+import 'home.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -25,6 +27,10 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   void onLogin() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => Home()),
+    );
   }
 
   @override
