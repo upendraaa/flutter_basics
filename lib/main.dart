@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_basics/ContainerEx.dart';
 import 'package:flutter_basics/home.dart';
 import 'home.dart';
 import 'ListItems.dart';
+import 'ContainerEx.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -34,6 +36,10 @@ class _MyHomePageState extends State<MyHomePage> {
     );*/
 
     Navigator.push(context, MaterialPageRoute(builder: (context) => Namer()));
+  }
+
+  void openContainer(){
+    Navigator.push(context, MaterialPageRoute(builder: (context)=>ContainerEx()));
   }
 
   @override
@@ -72,6 +78,17 @@ class _MyHomePageState extends State<MyHomePage> {
                 textColor: Colors.white,
                 onPressed: onLogin,
                 child: Text("LogIn"),
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+              width: double.infinity,
+              height: 40,
+              child: RaisedButton(
+                color: Colors.green,
+                textColor: Colors.white,
+                onPressed: openContainer,
+                child: Text("Example"),
               ),
             ),
             Container(

@@ -1,21 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
 import 'package:flutter_basics/SavedItems.dart';
+import 'package:flutter_basics/main.dart';
 
 class Namer extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     final wordPair = WordPair.random();
 
-    return MaterialApp(
-          title: "Flutter app",
-          home: Scaffold(
+    return
+         Scaffold(
              body: Center(
                child: RandomWords() ,
              )
-          ),
-
-    );
+          );
   }
 }
 
@@ -27,6 +25,10 @@ class RandomWordState extends State<RandomWords>{
   Widget build(BuildContext context) {
     return Scaffold(
              appBar: AppBar(
+               leading: new IconButton(
+                 icon: new Icon(Icons.arrow_back, color: Colors.green),
+                 onPressed: () => Navigator.of(context).pop(),
+               ),
                 title: Text("Random Names"),
                 actions: <Widget>[
                   IconButton(icon: Icon(Icons.list), onPressed: pushSaved)
