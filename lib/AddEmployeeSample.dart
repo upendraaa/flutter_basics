@@ -34,6 +34,8 @@ class EmployeeDisplay extends State<EmployeeState> {
 
   void saveEmployee(var employee) {
     employeeList.add(employee);
+    editController.clear();
+    //To dynamically change the state
     setState(() {
 
     });
@@ -47,13 +49,11 @@ class EmployeeDisplay extends State<EmployeeState> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
         body: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -80,10 +80,11 @@ class EmployeeDisplay extends State<EmployeeState> {
                       textColor: Colors.white,
                       onPressed: ()=>saveEmployee(Employee(employeeList.length+1,
                           editController.text)))),
-              new Flexible(
+              new Container(
+                margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
                   child: RaisedButton(
                       child: Text("Delete"),
-                      color: Colors.green,
+                      color: Colors.red,
                       padding: EdgeInsets.all(10),
                       textColor: Colors.white,
                       onPressed: deleteElement))
@@ -95,7 +96,9 @@ class EmployeeDisplay extends State<EmployeeState> {
             child: ListView.builder(
                      key: Key("String"),
                      itemCount: employeeList.length,
+                       //To add the scroll properties
                        scrollDirection: Axis.vertical,
+                       //To Wrap the list element
                        shrinkWrap: true,
                        padding: const EdgeInsets.all(18.0),
                        itemBuilder: (context,i){
