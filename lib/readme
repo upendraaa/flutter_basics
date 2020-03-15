@@ -1,0 +1,2 @@
+1) To smoothly work the back button there should be only on Material app bar, rest of pages should be Scaffold
+2) To refresh the List needs to call setState() after the action
