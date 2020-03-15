@@ -16,10 +16,12 @@ class AddEmplyoee extends StatelessWidget {
 class Employee {
   var id;
   var name;
+  var isFav;
 
-  Employee(var id, var name) {
+  Employee(var id, var name,var isFav) {
     this.id = id;
     this.name = name;
+    this.isFav = isFav;
   }
 }
 
@@ -79,7 +81,7 @@ class EmployeeDisplay extends State<EmployeeState> {
                       padding: EdgeInsets.all(10),
                       textColor: Colors.white,
                       onPressed: ()=>saveEmployee(Employee(employeeList.length+1,
-                          editController.text)))),
+                          editController.text,false)))),
               new Container(
                 margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
                   child: RaisedButton(
@@ -91,6 +93,12 @@ class EmployeeDisplay extends State<EmployeeState> {
             ],
           ),
         ),
+        Container(
+            margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
+            child: Text("List of Employees",
+          style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),
+          textAlign: TextAlign.center,
+            )),
         new Expanded(
           child: Card(
             child: ListView.builder(
@@ -104,7 +112,16 @@ class EmployeeDisplay extends State<EmployeeState> {
                        itemBuilder: (context,i){
                          if(i<employeeList.length) {
                            return ListTile(
-                             title: Text(employeeList[i].id.toString() + ".  " +employeeList[i].name),
+                             leading: Text(employeeList[i].id.toString()+".",
+                             style: TextStyle(
+                                 fontWeight: FontWeight.bold
+                             ),),
+                             title: Text(employeeList[i].name),
+                             trailing: Icon(employeeList[i].isFav?Icons.favorite:Icons.favorite_border,
+                              color: employeeList[i].isFav?Colors.red:null
+                             ),
+                             onTap: (){employeeList[i].isFav = !employeeList[i].isFav;
+                                setState(() {});},
                            );
                          }else{
                            return null;
