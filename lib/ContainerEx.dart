@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_basics/AddEmployeeSample.dart';
+import 'package:flutter_basics/GetExample.dart';
 import 'ListItems.dart';
 import 'AddEmployeeSample.dart';
+import 'GetExample.dart';
 
 class MyAppBar extends StatelessWidget {
   MyAppBar({this.title});
@@ -47,7 +49,9 @@ class MyScaffold extends StatelessWidget {
       Navigator.push(context, MaterialPageRoute(builder: (context) => Namer()));
     }
 
-    void openNetwork() {}
+    void openNetwork() {
+      Navigator.push(context, MaterialPageRoute(builder: (context)=>GetExample()));
+    }
     void imageCaching() {}
     void a() {
       Navigator.push(context, MaterialPageRoute(builder: (context) => AddEmplyoee()));
